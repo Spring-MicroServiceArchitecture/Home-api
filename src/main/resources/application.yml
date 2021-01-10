@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: home-api
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 12000
+#      circuitBreaker:
+#        requestVolumeThreshold: 1
+#        errorThresholdPercentage: 50
+  threadpool:
+    default:
+      coreSize: 10
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+
+feign:
+  hystrix:
+    enabled: true
+
