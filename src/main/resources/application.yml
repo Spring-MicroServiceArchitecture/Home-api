@@ -35,3 +35,6 @@ feign:
   hystrix:
     enabled: true
 
+ribbon:
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 0
